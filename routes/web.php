@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/userapi','Api\UserApiController@userapi');
+Route::get('/test','Api\UserApiController@test');
