@@ -19,3 +19,6 @@ Route::get('/test','Api\UserApiController@test');
 //作业 三种post请求
 Route::get('/tests','Api\UserApiController@tests');
 Route::get('/times','Api\UserApiController@times')->Middleware('teststimes'); //中间件测试
+Route::post('/reg','Api\UserApiController@posts');
+Route::post('/login','Api\UserApiController@logn');
+

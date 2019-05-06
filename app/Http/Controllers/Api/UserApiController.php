@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\model\user;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Str;
 class UserApiController extends Controller
 {
     public function userapi(Request $Request)
@@ -79,5 +82,95 @@ class UserApiController extends Controller
     public function times()
     {
         echo 222222;
+    }
+    //注册
+    public  function  posts(Request $request)
+    {
+        $pass1 = $request-> input('pass1');
+        $pass2 = $request-> input('pass2');
+        $email =  $request-> input('email');
+        //确认密码是否一致
+        if($pass1 != $pass2){
+            $response = [];
+            $response[] = [
+                'errno' => 50001,
+                'msg' => '密码错误'
+            ];
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        }
+        $pass = password_hash($pass1,PASSWORD_DEFAULT);
+        //验证邮箱唯一
+        $em = user::where(['email'=>$email])->first();
+        if($em){
+            $response = [];
+            $response[] = [
+                'errno' => 50002,
+                'msg' => '邮箱已存在'
+            ];
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        }
+        //入库
+        $data = [
+            'name'=> $request-> input('name'),
+            'email'=> $email,
+            'pass' => $pass,
+            'create_time' => time()
+        ];
+        $res = user::insertGetId($data);
+        if($res){
+            $response = [
+                'errno' => 0,
+                'msg' => '注册成功'
+            ];
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        }else{
+            $response = [
+                'errno' => 50003,
+                'msg' => '注册失败'
+            ];
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        }
+    }
+    //登陆
+    public  function  logn(Request $request)
+    {
+        $email = $request-> input('email');
+        $pass = $request-> input('pass');
+        //查询
+        $u = user::where(['email'=>$email])->first();
+        if(!$u){
+            $response = [
+                'errno' => 50004,
+                'msg' => '帐号不正确'
+            ];
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        }else{
+            //验证密码
+            if(password_verify($pass,$u-> pass)){
+                $response = [
+                    'errno' => 50005,
+                    'msg' => '密码不正确'
+                ];
+                die(json_encode($response,JSON_UNESCAPED_UNICODE));
+            }
+
+            //token 存入
+            $token = $this -> getToken($u-> uid);
+            $key = "token:user".$u-> uid;
+            $redis_key = Redis::get($key);
+            if($redis_key){
+                return $redis_key;
+            }else{
+                Redis::set($key,$token);
+                Redis::expire($key,604800);
+            }
+
+        }
+    }
+    //token信息
+    protected  function  getToken($uid)
+    {
+        $str = substr(sha1(time().Str::random(10).$uid),5,10);
+        return $str;
     }
 }
