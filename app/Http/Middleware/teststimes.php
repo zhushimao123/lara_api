@@ -18,8 +18,11 @@ class teststimes
      */
     public function handle($request, Closure $next)
     {
+//        echo "<pre>";print_r($_SERVER);echo "<pre>";die;
+        $uid = $request-> input('uid');
+        $token = $request-> input('token');
         // echo 1111;
-        $key = "nums";
+        $key = "token:user".$token.$uid.$_SERVER['REMOTE_ADDR'];
         $num = Redis::get($key);
         var_dump($num);
         if($num>=10){

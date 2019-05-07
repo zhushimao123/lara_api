@@ -173,4 +173,9 @@ class UserApiController extends Controller
         $str = substr(sha1(time().Str::random(10).$uid),5,10);
         return $str;
     }
+    //个人中心
+    public  function  myUser()
+    {
+        echo "我的名字路星河";
+    }
 }
