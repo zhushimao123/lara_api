@@ -83,4 +83,9 @@ class PassportController extends Controller
         $str = substr(sha1(time() . Str::random(10) . $uid.$_SERVER['DB_HOST']), 5, 15);
         return $str;
     }
+    public function  goodslist()
+    {
+        $data = file_get_contents("php://input");
+        echo $data;
+    }
 }
