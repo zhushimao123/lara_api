@@ -64,7 +64,7 @@ class PassportController extends Controller
                 $response = [
                     'msg'=> '登陆成功',
                     'erron' => 'ok',
-                    'token' => Redis::get($key),
+                    'token' => $token,
                     'uid'=> $res-> uid
                 ];
                 echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;

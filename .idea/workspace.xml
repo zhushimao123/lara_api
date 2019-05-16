@@ -53,10 +53,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/passport/PassportController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+            <state relative-caret-position="245">
+              <caret line="65" column="36" lean-forward="true" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
+                <element signature="e#267#1187#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -287,12 +288,12 @@
       <workItem from="1557801977914" duration="4032000" />
       <workItem from="1557828466803" duration="604000" />
       <workItem from="1557910141243" duration="7344000" />
-      <workItem from="1557969083574" duration="3589000" />
+      <workItem from="1557969083574" duration="4248000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83245000" />
+    <option name="totallyTimeSpent" value="83904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -501,10 +502,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/passport/PassportController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+        <state relative-caret-position="245">
+          <caret line="65" column="36" lean-forward="true" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
+            <element signature="e#267#1187#0#PHP" />
           </folding>
         </state>
       </provider>
