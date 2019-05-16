@@ -87,7 +87,10 @@ class PassportController extends Controller
     {
         $data = file_get_contents("php://input");
         $json_arr = json_decode($data,true);
-        var_dump($json_arr);die;
+//        var_dump($json_arr);die;
+        foreach($json_arr as $k=> $v){
+            var_dump($v);die;
+        }
         $response = [
             'goods_name'=> $json_arr['goods_name'],
             'goods_img' => $json_arr['goods_img'],
