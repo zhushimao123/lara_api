@@ -77,7 +77,7 @@ class PassportController extends Controller
             echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
         }
     }
-    //token信息
+    //token信息  123
     protected function getToken($uid)
     {
         $str = substr(sha1(time() . Str::random(10) . $uid.$_SERVER['DB_HOST']), 5, 15);

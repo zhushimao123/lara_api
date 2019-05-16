@@ -53,11 +53,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/passport/PassportController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="65" column="36" lean-forward="true" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
+            <state relative-caret-position="200">
+              <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
                 <element signature="e#267#1187#0#PHP" />
+                <element signature="e#1201#2446#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -288,12 +289,12 @@
       <workItem from="1557801977914" duration="4032000" />
       <workItem from="1557828466803" duration="604000" />
       <workItem from="1557910141243" duration="7344000" />
-      <workItem from="1557969083574" duration="4248000" />
+      <workItem from="1557969083574" duration="4434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83904000" />
+    <option name="totallyTimeSpent" value="84090000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -502,11 +503,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/passport/PassportController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="65" column="36" lean-forward="true" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
+        <state relative-caret-position="200">
+          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
             <element signature="e#267#1187#0#PHP" />
+            <element signature="e#1201#2446#0#PHP" />
           </folding>
         </state>
       </provider>
