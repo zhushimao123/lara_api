@@ -86,6 +86,13 @@ class PassportController extends Controller
     public function  goodslist()
     {
         $data = file_get_contents("php://input");
-        echo $data;
+        $json_arr = json_decode($data,true);
+        $response = [
+            'goods_name'=> $json_arr['goods_name'],
+            'goods_img' => $json_arr['goods_img'],
+            'goods_id' => $json_arr['goods_id'],
+            'goods_price' => $json_arr['goods_price']
+        ];
+        echo json_encode($response,JSON_UNESCAPED_UNICODE);die;
     }
 }
