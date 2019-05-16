@@ -89,14 +89,14 @@ class PassportController extends Controller
         $json_arr = json_decode($data,true);
 //        var_dump($json_arr);die;
         foreach($json_arr as $k=> $v){
-            var_dump($v);die;
+            $response = [
+                'goods_name'=> $v['goods_name'],
+                'goods_img' => $v['goods_img'],
+                'goods_id' => $v['goods_id'],
+                'goods_price' => $v['goods_price']
+            ];
+            echo json_encode($response,JSON_UNESCAPED_UNICODE);
         }
-        $response = [
-            'goods_name'=> $json_arr['goods_name'],
-            'goods_img' => $json_arr['goods_img'],
-            'goods_id' => $json_arr['goods_id'],
-            'goods_price' => $json_arr['goods_price']
-        ];
-        echo json_encode($response,JSON_UNESCAPED_UNICODE);die;
+
     }
 }
