@@ -14,6 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+  //  ->Middleware('checktokenlogin');
+
 Route::get('/userapi','Api\UserApiController@userapi');
 Route::get('/test','Api\UserApiController@test');
 //作业 三种post请求
@@ -25,4 +27,29 @@ Route::post('/reg','Api\UserApiController@posts');
 Route::post('/login','Api\UserApiController@logn');
 //个人中心
 Route::get('/users','Api\UserApiController@myUser')->Middleware(['checklogin','teststimes']);
+//资源控制器
+Route::resource('/goods', \goods\GoodsController::class);
+//作业 对称加密
+Route::get('/encode','Api\UserApiController@dncrypt');
+//凯撒加密
+Route::get('/kaisa','Api\UserApiController@kaisa');
+//发送加密数据
+Route::get('/encrypt','Api\UserApiController@encrypt');
+//非对称加密传送数据
+Route::get('/rsas','Api\UserApiController@rsa');
+//签名
+Route::get('/qianming','Api\UserApiController@autograph');
+//注册页面
+Route::get('/user','Api\UserApiController@user');
+//周考注册
+Route::post('/userinfo','Api\UserApiController@userinfo');
+
+
+//h5+app注册
+Route::post('/appuser','passport\PassportController@user');
+//登陆
+Route::post('/applogin','passport\PassportController@login');
+////个人中心
+//Route::get('/appuserInfo','passport\PassportController@userInfo');
+
 

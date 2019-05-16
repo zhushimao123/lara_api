@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\checktokenlogin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -62,6 +63,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'teststimes'=> \App\Http\Middleware\teststimes::class,
         'checklogin' => \App\Http\Middleware\checklogin::class,
+        'checktokenlogin'=> checktokenlogin::class
     ];
 
     /**
