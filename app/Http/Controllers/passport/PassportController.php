@@ -14,7 +14,6 @@ class PassportController extends Controller
     {
         $data = file_get_contents("php://input");
         $json_arr = json_decode($data,true);
-        echo $json_arr;die;
         $res = DB::table('t_user')->where(['email'=> $json_arr['email']])->first();
         if($res){
             $response = [
