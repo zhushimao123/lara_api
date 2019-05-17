@@ -87,6 +87,26 @@ class PassportController extends Controller
     public function  cart()
     {
         $data = file_get_contents("php://input");
-        echo $data;
+        $json_arr = json_decode($data,true);
+        $cartinfo = [
+            'user_id'=> $json_arr['user_id'],
+            'goods_id'=> $json_arr['goods_id'],
+            'buy_number'=> $json_arr['buy_number'],
+            'create_time'=> time()
+        ];
+        $res = DB::table('shop_cart')->insert($cartinfo);
+        if($res){
+            $response = [
+                'msg'=> '加入购物车成功',
+                'erron' => 'ok'
+            ];
+            echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
+        }else{
+            $response = [
+                'msg'=> '加入购物车失败',
+                'erron' => 'no'
+            ];
+            echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
+        }
     }
 }
