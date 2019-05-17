@@ -119,7 +119,7 @@ class PassportController extends Controller
             $info = DB::table('shop_cart')->where(['goods_id'=> $json_arr['goods_id'],'user_id'=> $json_arr['user_id']])->first();
 //            var_dump($info);die;
             $buy_number = $info->buy_number;
-            var_dump($buy_number);die;
+//            var_dump($buy_number);die;
             $res = DB::table('shop_cart')->where(['goods_id'=> $json_arr['goods_id'],'user_id'=> $json_arr['user_id']])->update(['buy_number'=>$buy_number + $json_arr['buy_number']]);
             if($res){
                 $response = [
