@@ -89,7 +89,8 @@ class PassportController extends Controller
         $data = file_get_contents("php://input");
         $json_arr = json_decode($data,true);
         //购物车表有商品的id 修改要购买的数量
-        if(!$json_arr) {
+        $Cart = DB::table('shop_cart')->where(['goods_id'=> $json_arr['goods_id'],'user_id'=> $json_arr['user_id']])->first();
+        if(!$Cart) {
             // 没有商品数据 做添加
             $cartinfo = [
                 'user_id'=> $json_arr['user_id'],
