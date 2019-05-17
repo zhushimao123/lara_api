@@ -88,25 +88,49 @@ class PassportController extends Controller
     {
         $data = file_get_contents("php://input");
         $json_arr = json_decode($data,true);
-        $cartinfo = [
-            'user_id'=> $json_arr['user_id'],
-            'goods_id'=> $json_arr['goods_id'],
-            'buy_number'=> $json_arr['buy_number'],
-            'create_time'=> time()
-        ];
-        $res = DB::table('shop_cart')->insert($cartinfo);
-        if($res){
-            $response = [
-                'msg'=> '加入购物车成功',
-                'erron' => 'ok'
+        //购物车表有商品的id 修改要购买的数量
+        if(!$json_arr) {
+            // 没有商品数据 做添加
+            $cartinfo = [
+                'user_id'=> $json_arr['user_id'],
+                'goods_id'=> $json_arr['goods_id'],
+                'buy_number'=> $json_arr['buy_number'],
+                'create_time'=> time()
             ];
-            echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
+
+            $res = DB::table('shop_cart')->insert($cartinfo);
+            if($res){
+                $response = [
+                    'msg'=> '加入购物车成功',
+                    'erron' => 'ok'
+                ];
+                echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
+            }else{
+                $response = [
+                    'msg'=> '加入购物车失败',
+                    'erron' => 'no'
+                ];
+                echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
+            }
         }else{
-            $response = [
-                'msg'=> '加入购物车失败',
-                'erron' => 'no'
-            ];
-            echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
+            //做修改
+            //根据商品id 用户id
+            $Info = DB::table('shop_cart')->where(['goods_id'=> $json_arr['goods_id'],'user_id'=> $json_arr['user_id']])->first();
+            $buy_number = $Info-> buy_number;
+            $res = DB::table('shop_cart')->where(['goods_id'=> $json_arr['goods_id'],'user_id'=> $json_arr['user_id']])->updata(['buy_number'=>$buy_number + $json_arr['buy_number']]);
+            if($res){
+                $response = [
+                    'msg'=> '加入购物车成功',
+                    'erron' => 'ok'
+                ];
+                echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
+            }else{
+                $response = [
+                    'msg'=> '加入购物车失败',
+                    'erron' => 'no'
+                ];
+                echo  json_encode($response,JSON_UNESCAPED_UNICODE);die;
+            }
         }
     }
 }
