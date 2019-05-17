@@ -51,6 +51,6 @@ Route::post('/appuser','passport\PassportController@user');
 Route::post('/applogin','passport\PassportController@login');
 ////个人中心
 //Route::get('/appuserInfo','passport\PassportController@userInfo');
-//商品列表
-Route::post('/appgoodslist','passport\PassportController@goodslist');
+//添加至购物车
+Route::post('/appcart','passport\PassportController@cart');
 

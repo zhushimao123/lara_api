@@ -83,20 +83,10 @@ class PassportController extends Controller
         $str = substr(sha1(time() . Str::random(10) . $uid.$_SERVER['DB_HOST']), 5, 15);
         return $str;
     }
-    public function  goodslist()
+    //添加至购物车
+    public function  cart()
     {
         $data = file_get_contents("php://input");
-        $json_arr = json_decode($data,true);
-//        var_dump($json_arr);die;
-        foreach($json_arr as $k=> $v){
-            $response = [
-                'goods_name'=> $v['goods_name'],
-                'goods_img' => $v['goods_img'],
-                'goods_id' => $v['goods_id'],
-                'goods_price' => $v['goods_price']
-            ];
-            echo json_encode($response,JSON_UNESCAPED_UNICODE);
-        }
-
+        echo $data;
     }
 }
