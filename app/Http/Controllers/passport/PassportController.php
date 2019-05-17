@@ -115,8 +115,9 @@ class PassportController extends Controller
         }else{
             //做修改
             //根据商品id 用户id
-            $Info = DB::table('shop_cart')->where(['goods_id'=> $json_arr['goods_id'],'user_id'=> $json_arr['user_id']])->get()->toArray();
-            $buy_number = $Info['buy_number'];
+            $info = DB::table('shop_cart')->where(['goods_id'=> $json_arr['goods_id'],'user_id'=> $json_arr['user_id']])->get()->toArray();
+            var_dump($info);die;
+            //            $buy_number = $Info['buy_number'];
             $res = DB::table('shop_cart')->where(['goods_id'=> $json_arr['goods_id'],'user_id'=> $json_arr['user_id']])->update(['buy_number'=>$buy_number + $json_arr['buy_number']]);
             if($res){
                 $response = [
