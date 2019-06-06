@@ -141,4 +141,8 @@ class ApitestController extends Controller
         ];
         die(json_encode($response));
     }
+    public  function  registers()
+    {
+        return view('reg.test');
+    }
 }

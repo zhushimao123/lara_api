@@ -59,6 +59,7 @@ Route::post('/appcart','passport\PassportController@cart');
  *  */
 //注册
 Route::get('/reg','test\ApitestController@register');
+Route::get('/regs','test\ApitestController@registers');
 //执行
 Route::post('/regdo','test\ApitestController@regdo');
 //显示客户端ip
