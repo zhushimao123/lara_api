@@ -63,7 +63,10 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'teststimes'=> \App\Http\Middleware\teststimes::class,
         'checklogin' => \App\Http\Middleware\checklogin::class,
-        'checktokenlogin'=> checktokenlogin::class
+        'checktokenlogin'=> checktokenlogin::class,
+        'testapi'=> \App\Http\Middleware\Testapi::class,
+        'tokentest'=> \App\Http\Middleware\TokenTest::class
+
     ];
 
     /**

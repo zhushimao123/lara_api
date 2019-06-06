@@ -54,3 +54,27 @@ Route::post('/applogin','passport\PassportController@login');
 //添加至购物车
 Route::post('/appcart','passport\PassportController@cart');
 
+/*
+ *企业注册
+ *  */
+//注册
+Route::get('/reg','test\ApitestController@register');
+//执行
+Route::post('/regdo','test\ApitestController@regdo');
+//显示客户端ip
+Route::get('/userip','test\ApitestController@userip')->Middleware('tokentest');
+//显示客户端ui
+Route::get('/userui','test\ApitestController@userui')->Middleware('tokentest');
+//getToken
+Route::get('/token','test\ApitestController@getToken')->Middleware('testapi');
+//登陆
+Route::get('/logo','sigin\SiginController@sigin');
+
+//签到
+Route::get('/sigindo','sigin\SiginController@sigindo');
+//执行
+Route::get('/sig','sigin\SiginController@sig');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

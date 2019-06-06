@@ -26,6 +26,8 @@ class VerifyCsrfToken extends Middleware
         '/userinfo',
         '/appuser',
         '/applogin',
-        '/appcart'
+        '/appcart',
+        '/test/*',
+        'regdo'
     ];
 }
